@@ -34,7 +34,6 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="google-signin-client_id" content="698585178770-dn2hrp0fko0lnsvlaep4smflt4mq73ll.apps.googleusercontent.com">
   <title>e-prep</title>
-  \
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -44,8 +43,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
   <link rel="stylesheet" href="/styles/main.css">
+
+  
 </head>
-<body>
+<body onload="">
   <nav class="navbar  navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -59,6 +60,10 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
+
+               
+
+
           <!--remove active so that it works correctly dynamically-->
           <li class="<%= typeof page !== 'undefined' && page === 'home' ? 'active' : '' %>"><a class="navbar-link" href="/">Home</a></li>
           <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Exams</a></li>
@@ -68,29 +73,13 @@
           <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">About Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" onclick="onSignIn()"><a class="navbar-link">Sign In with Google</a></li>
+            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" ><a class="navbar-link"><%= currentUser.displayName %></a></li>
             <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" onclick="signOut()"><a class="navbar-link">Sign out</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  <script>
-      
-        function onSignIn(){
-            var provider = new firebase.auth.GoogleAuthProvider();
-            // Using a popup.
-           provider.addScope('profile');
-           provider.addScope('email');
-           firebase.auth().signInWithPopup(provider).then(function(result) {
-            // This gives you a Google Access Token.
-            console.log(result);
-            var token = result.credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
-            console.log(user);
-           });
-        }
-    </script>
+
     <script>
         function signOut(){
             firebase.auth().signOut().then(function() {
