@@ -69,6 +69,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" onclick="onSignIn()"><a class="navbar-link">Sign In with Google</a></li>
+            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" onclick="signOut()"><a class="navbar-link">Sign out</a></li>
         </ul>
       </div>
     </div>
@@ -78,7 +79,6 @@
         function onSignIn(){
             var provider = new firebase.auth.GoogleAuthProvider();
             // Using a popup.
-           
            provider.addScope('profile');
            provider.addScope('email');
            firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -89,6 +89,17 @@
             var user = result.user;
             console.log(user);
            });
+        }
+    </script>
+    <script>
+        function signOut(){
+            firebase.auth().signOut().then(function() {
+                // Sign-out successful.
+                console.log('User Logged Out!');
+            }).catch(function(error) {
+                // An error happened.
+                console.log(error);
+            });              
         }
     </script>
   <div class="container">
