@@ -8,28 +8,36 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
 
     <script>
       // Your web app's Firebase configuration
       var firebaseConfig = {
-        apiKey: process.env.firebase.APiKey,
+        apiKey: "AIzaSyDLD2vQrduK4jPw69bdhKbsF-DS5LiI4No",
         authDomain: "e-prep-b0940.firebaseapp.com",
         databaseURL: "https://e-prep-b0940.firebaseio.com",
         projectId: "e-prep-b0940",
         storageBucket: "e-prep-b0940.appspot.com",
-        messagingSenderId: process.env.firebaseSenderId,
+        messagingSenderId: "698585178770",
         appId: "1:698585178770:web:831b6f161205cde1497c4b",
         measurementId: "G-FGCD6JQJE4"
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+
     </script>
     <!--========================================================-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="google-signin-client_id" content="698585178770-dn2hrp0fko0lnsvlaep4smflt4mq73ll.apps.googleusercontent.com">
   <title>e-prep</title>
+  \
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
@@ -53,60 +61,35 @@
         <ul class="nav navbar-nav">
           <!--remove active so that it works correctly dynamically-->
           <li class="<%= typeof page !== 'undefined' && page === 'home' ? 'active' : '' %>"><a class="navbar-link" href="/">Home</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Events</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === 'calender' ? 'active' : '' %>"><a class="navbar-link" href="/#">Calender</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Exams</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Calender</a></li>
           <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Clubs</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>"><a class="navbar-link" href="/contactUs">Contact Us</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Contact Us</a></li>
           <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">About Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>" data-toggle="modal" data-target="#loginModal" role="button"><a class="navbar-link">Login</a></li>
-            <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a class="navbar-link" href="/register">Sign Up</a></li>
+            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" onclick="onSignIn()"><a class="navbar-link">Sign In with Google</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  <!----------------------------------Login model----------------------------->
-  <div id="loginModal" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg model-view" role="content">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header bg-primary" >
-					<h2 class="modal-title">Login 
-            <span class="btn-group pull-right" style="padding-top: 3%"  >
-                <button type="button" class="close " data-dismiss="modal">&times;</button>
-            </span>
-					</h2>
-				</div>
-				<div class="modal-body">
-					<form class=""><!--use some classes to make look nicer-->
-						<div class="form-group">
-							<label class="sr-only" for="Email">Email address</label>
-							<input type="email" class="form-control form-control-sm mr-1" id="Email" placeholder="Enter email">
-						</div>
-						<div class="form-group">
-							<label class="sr-only" for="Password">Password</label>
-							<input type="password" class="form-control form-control-sm mr-1" id="Password" placeholder="Password">
-						</div>
-						<div class="form-check">
-							<label class="form-check-label">
-								<input class="form-check-input" type="checkbox"> Remember me
-							</label>
-            </div>
-            <div style="padding-left:60%; ">
-                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-            </div>
-					  
-					</form>
-				</div>
-				<div class="modal-footer">
-            <button type="submit" class="btn btn-warning btn-sm">Forgot password</button>
-					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  
+  <script>
+      
+        function onSignIn(){
+            var provider = new firebase.auth.GoogleAuthProvider();
+            // Using a popup.
+           
+           provider.addScope('profile');
+           provider.addScope('email');
+           firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token.
+            console.log(result);
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            console.log(user);
+           });
+        }
+    </script>
   <div class="container">
   

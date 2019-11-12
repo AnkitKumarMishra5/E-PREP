@@ -5,6 +5,17 @@ var   express        = require("express"),
       helmet         = require("helmet"),
       flash          = require("connect-flash"),
       moment         = require("moment");
+      
+      
+var firebase = require('firebase/app');
+require('firebase/auth');
+require('firebase/database');
+
+
+
+
+
+
 
 
 app.set("view engine", "ejs");
