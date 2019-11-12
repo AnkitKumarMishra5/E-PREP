@@ -16,15 +16,15 @@ app.use(express.static(__dirname+"/public"));
 //    ROUTES
 //==================
       
-app.get('/', (req, res) => res.render('landing'));
-      
-      
-      
-      
-      
-      
-      
-      
+app.get('/', (req, res) => res.render('landing',{page:"home"}));
+
+
+
+
+
+
+
+
 //===================================
 //assigning port to server
 //===================================
