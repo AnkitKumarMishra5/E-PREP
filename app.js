@@ -4,9 +4,7 @@ var   express        = require("express"),
       bodyParser     = require("body-parser"),
       helmet         = require("helmet"),
       flash          = require("connect-flash"),
-      moment         = require("moment"),
-      LocalStrategy  = require("passport-local"),
-      passport       = require("passport");
+      moment         = require("moment");
 
 
 app.set("view engine", "ejs");
