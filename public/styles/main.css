@@ -180,4 +180,32 @@ calander-content{
   opacity: 1.0;
 
 }
-  
+.table_show{
+  margin-left :15%;
+  width: 80%;
+}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+  border: 1px solid #ddd;
+  padding-left: 15px;
+  line-height: 3;
+}
+.edit_button{
+
+  margin-top: 40px;
+  margin-right:50px ;
+}
+.editanchor{
+  color: white;
+}
+.trp{
+  margin-left: 7px;
+  margin-right: 7px;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+.jkt{
+  size: 40px;
+}
+.kishan{
+  height: 430px;
+}

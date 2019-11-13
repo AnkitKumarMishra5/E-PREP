@@ -28,8 +28,8 @@
           <li class="<%= typeof page !== 'undefined' && page === 'home' ? 'active' : '' %>"><a href="/">Home</a></li>
           <li class="<%= typeof page !== 'undefined' && page === 'test' ? 'active' : '' %>"><a href="/">Exam</a></li>
           <li class="<%= typeof page !== 'undefined' && page === 'paper' ? 'active' : '' %>"><a href="/">Add Paper</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === 'about' ? 'active' : '' %>"><a href="#">About Us</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>"><a href="#">Contact Us</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === 'about' ? 'active' : '' %>"><a href="/about_us">About Us</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>"><a href="/contact_us">Contact Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <% if (!currentUser) { %>
@@ -47,7 +47,7 @@
       </div>
     </div>
   </nav>
-  <!--<div class="container">
+  <div class="container">
     <% if (error && error.length > 0) {%>
       <div class="alert alert-danger" role="alert">
         <%= error %>
@@ -58,5 +58,5 @@
         <%= success %>
       </div>
     <% } %>
-  </div>-->
+  </div>
   <div class="container">
