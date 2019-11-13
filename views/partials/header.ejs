@@ -1,53 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--==================Firebase set up======================-->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
-
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyDLD2vQrduK4jPw69bdhKbsF-DS5LiI4No",
-        authDomain: "e-prep-b0940.firebaseapp.com",
-        databaseURL: "https://e-prep-b0940.firebaseio.com",
-        projectId: "e-prep-b0940",
-        storageBucket: "e-prep-b0940.appspot.com",
-        messagingSenderId: "698585178770",
-        appId: "1:698585178770:web:831b6f161205cde1497c4b",
-        measurementId: "G-FGCD6JQJE4"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-
-    </script>
-    <!--========================================================-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="google-signin-client_id" content="698585178770-dn2hrp0fko0lnsvlaep4smflt4mq73ll.apps.googleusercontent.com">
-  <title>e-prep</title>
-  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <title>Hotel Duniya</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/main.css">
-
   
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
-<body onload="">
-  <nav class="navbar  navbar-inverse navbar-fixed-top">
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -56,52 +20,42 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand kis mr-auto" href="/">e-prep</a>
+        <a class="navbar-brand" href="/">E-prep</a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-
-               
-
-
-          <!--remove active so that it works correctly dynamically-->
-          <li class="<%= typeof page !== 'undefined' && page === 'home' ? 'active' : '' %>"><a class="navbar-link" href="/">Home</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Exams</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Calender</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Clubs</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">Contact Us</a></li>
-          <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">About Us</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === 'home' ? 'active' : '' %>"><a href="/">Home</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === 'test' ? 'active' : '' %>"><a href="/">Exam</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === 'paper' ? 'active' : '' %>"><a href="/">Add Paper</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === 'about' ? 'active' : '' %>"><a href="#">About Us</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>"><a href="#">Contact Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" ><a class="navbar-link">kishan Kunal</a></li>
-            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" onclick="signOut()"><a class="navbar-link">Sign out</a></li>
+          <% if (!currentUser) { %>
+            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>
+            <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>
+          <% } else { %>
+            <% if (currentUser.isAdmin) { %>
+              <li><a href="/users/<%= currentUser._id %>">Admin. <%= currentUser.username %></a></li>
+            <% } else { %>
+            <li><a href="/users/<%= currentUser._id %>">Hi, <%= currentUser.username %></a></li>
+            <% } %>
+            <li><a href="/logout">Logout</a></li>
+          <% } %>
         </ul>
       </div>
     </div>
   </nav>
-  <script>
-    function current(){
-      firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log("current user is " + user.displayName);
-      } else {
-         // No user is signed in.
-      }
-});
-    }
-  </script>
-
-    <script>
-        function signOut(){
-            firebase.auth().signOut().then(function() {
-                // Sign-out successful.
-                console.log('User Logged Out!');
-                
-            }).catch(function(error) {
-                // An error happened.
-                console.log(error);
-            });              
-        }
-    </script>
   <div class="container">
-  
+    <% if (error && error.length > 0) {%>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+    <% if (success && success.length > 0) {%>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    <% } %>
+  </div>
+  <div class="container">

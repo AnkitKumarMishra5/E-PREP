@@ -1,60 +1,42 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <!--==================Firebase set up======================-->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
-
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyDLD2vQrduK4jPw69bdhKbsF-DS5LiI4No",
-        authDomain: "e-prep-b0940.firebaseapp.com",
-        databaseURL: "https://e-prep-b0940.firebaseio.com",
-        projectId: "e-prep-b0940",
-        storageBucket: "e-prep-b0940.appspot.com",
-        messagingSenderId: "698585178770",
-        appId: "1:698585178770:web:831b6f161205cde1497c4b",
-        measurementId: "G-FGCD6JQJE4"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-
-    </script>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>E-prep</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/styles/landing.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
 </head>
 <body>
-  <br><br><br><br><br>
-  <br><br>
-  <button onclick="googleSignin()">Sign in With google</button>
-  <br><br><br><br><br><br><br><br><br>
-  <script>
-   var provider = new firebase.auth.GoogleAuthProvider();
-
-  function googleSignin() {
-     firebase.auth().signInWithPopup(provider).then(function(result) {
-        var token = result.credential.accessToken;
-        var user = result.user;
-		
-        console.log(token)
-        console.log(user)
-        console.log(user.displayName);
-     }).catch(function(error) {
-          var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(error.code)
-        console.log(error.message)
-     });
-}  
-  </script>
-</body>
+  <div class="container">
+    <% if(error && error.length > 0){ %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+    <% if(success && success.length > 0){ %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    <% } %>
+  </div>
+  
+  <div id="landing-header">
+    <h1><a class="entryLink" href="/home">Welcome to E-prep</a></h1>
+    <a class="btn btn-lg btn-primary" href="/home"><h9>
+      <i class='fa fa-award' style='font-size:19px'></i>  Get started
+    </h9></a>
+  </div>
+  
+  <ul class="slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  </body>
 </html>
