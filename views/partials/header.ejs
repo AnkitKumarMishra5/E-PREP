@@ -73,18 +73,30 @@
           <li class="<%= typeof page !== 'undefined' && page === '' ? 'active' : '' %>"><a class="navbar-link" href="#">About Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" ><a class="navbar-link"><%= currentUser.displayName %></a></li>
+            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" ><a class="navbar-link">kishan Kunal</a></li>
             <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"  role="button" onclick="signOut()"><a class="navbar-link">Sign out</a></li>
         </ul>
       </div>
     </div>
   </nav>
+  <script>
+    function current(){
+      firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log("current user is " + user.displayName);
+      } else {
+         // No user is signed in.
+      }
+});
+    }
+  </script>
 
     <script>
         function signOut(){
             firebase.auth().signOut().then(function() {
                 // Sign-out successful.
                 console.log('User Logged Out!');
+                
             }).catch(function(error) {
                 // An error happened.
                 console.log(error);

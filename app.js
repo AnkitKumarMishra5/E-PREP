@@ -6,7 +6,19 @@ var   express        = require("express"),
       flash          = require("connect-flash"),
       moment         = require("moment");
       
-      
+var admin = require('firebase-admin');
+
+var serviceAccount = require('')
+
+var firebaseAdmin = admin.intializeApp({
+    credential : admin.credential.cert(serviceAcoount),
+    databaseURL:''
+})
+
+ // create Authentication middleware
+function isAuthenticated(){
+    //check if user is logged in
+}
 var firebase = require('firebase/app');
 require('firebase/auth');
 require('firebase/database');
@@ -25,8 +37,9 @@ app.use(express.static(__dirname+"/public"));
 //==================
 //    ROUTES
 //==================
-      
+
 app.get('/', (req, res) => res.render('landing'));
+
 app.get('/home',(req,res)=>res.render('home',{page:'home'}));
 
 
