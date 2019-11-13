@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Hotel Duniya</title>
+  <title>E-prep</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
   <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="">
 </head>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -31,22 +32,22 @@
           <li class="<%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>"><a href="#">Contact Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <% if (!currentUser) { %>
-            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>
-            <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>
-          <% } else { %>
-            <% if (currentUser.isAdmin) { %>
-              <li><a href="/users/<%= currentUser._id %>">Admin. <%= currentUser.username %></a></li>
+            <% if (!currentUser) { %>
+              <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>
+              <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>
             <% } else { %>
-            <li><a href="/users/<%= currentUser._id %>">Hi, <%= currentUser.username %></a></li>
+              <% if (currentUser.isAdmin) { %>
+                <li><a href="/users/<%= currentUser._id %>">Admin. <%= currentUser.username %></a></li>
+              <% } else { %>
+              <li><a href="/users/<%= currentUser._id %>">Hi, <%= currentUser.username %></a></li>
+              <% } %>
+              <li><a href="/logout">Logout</a></li>
             <% } %>
-            <li><a href="/logout">Logout</a></li>
-          <% } %>
-        </ul>
+          </ul>
       </div>
     </div>
   </nav>
-  <div class="container">
+  <!--<div class="container">
     <% if (error && error.length > 0) {%>
       <div class="alert alert-danger" role="alert">
         <%= error %>
@@ -57,5 +58,5 @@
         <%= success %>
       </div>
     <% } %>
-  </div>
+  </div>-->
   <div class="container">

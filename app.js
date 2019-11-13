@@ -9,7 +9,7 @@ var   express        = require("express"),
       passport       = require("passport"),
       LocalStrategy  = require("passport-local"),
       methodOverride = require("method-override");
-      //User           = require("./models/user");
+      User           = require("./models/user");
 
 // connect to the DB
 //let url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v13"; // fallback in case global var not working
@@ -41,21 +41,25 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//passport.use(new LocalStrategy(User.authenticate()));
-//passport.serializeUser(User.serializeUser());
-//passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // pass currentUser to all routes
 
-
-app.get('/', (req, res) => res.render('landing'));
-
 app.use((req, res, next) => {
-  res.locals.currentUser = req.user; // req.user is an authenticated user
-  res.locals.error = req.flash("error");
-  res.locals.success = req.flash("success");
-  next();
+    res.locals.currentUser = req.user; // req.user is an authenticated user
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    next();
 });
+//=============Routes=============================
+app.get('/', (req, res) => res.render('landing'));
+app.get('/home', (req, res) => res.render('home',{page:'home'}));
+app.get('/register', (req, res) => res.render('register',{page:'register'}));
+app.get('/login', (req, res) => res.render('login',{page:'login'}));
+
+
 
 
 
