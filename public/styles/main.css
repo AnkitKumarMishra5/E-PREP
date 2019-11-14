@@ -117,6 +117,7 @@ h2 .btn-group{
 }
 
 /* social median buttons styling */
+
 .fa {
   padding: 10px;
   font-size: 30px;
@@ -167,19 +168,7 @@ h2 .btn-group{
   width: 100%;
   height: 350px;
 }
-/*       calender styling      */  
-calander-content{
-  font-family: Calibri, sans-serif;
-  font-family: 'Roboto Condensed', sans-serif;
-  color: #333;
-  
-}
-.cld-day.today {
-  border-color:#fff;
-  background:gray;
-  opacity: 1.0;
 
-}
 .table_show{
   margin-left :15%;
   width: 80%;
@@ -208,4 +197,116 @@ calander-content{
 }
 .kishan{
   height: 430px;
+}
+.def{
+  padding:3%;
+}
+
+.card-body {
+  padding: 3%;
+  height: 270px;
+}
+
+.card-title
+{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.btn-primary
+{
+  color: white;
+  background-color: black;
+  border: 2px solid black;
+}
+
+.btn-primary:hover
+{
+  color: #222;
+  background-color: white;
+  border: 2px solid black;
+}
+
+.table-dark
+{
+  background-color: #222;
+  color: white;
+}
+
+#timeleft
+{
+  font-family: 'Libre Baskerville', serif;
+  font-size: 62px;
+}
+
+.ghi
+{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+}
+
+.jkl
+{
+  border-radius: 100%;
+  width: 45px;
+}
+
+#section-A
+{
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.9);
+  padding: 10px;
+}
+#section-B
+{
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.9);
+  padding: 10px;
+}
+#section-C
+{
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.9);
+  padding: 10px;
+}
+
+h2{
+  font-size: 3.5em;
+}
+
+.opt{
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.question-box
+{
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 30px;
+}
+
+.question
+{
+  margin:50px 20px;
+}
+
+.option
+{
+  padding: 10px;
+  margin:50px 80px;
+}
+
+.largerCheckbox { 
+  width: 30px; 
+  height:30px;
+  font-size: 3em;
+} 
+
+.logo
+{
+  font-size: 10px;
+}
+
+.pnt{
+  color: white;
 }

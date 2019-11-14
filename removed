@@ -1,14 +1,13 @@
-removed from landing after body element
-
-  <div class="container">
-    <% if(error && error.length > 0){ %>
-      <div class="alert alert-danger" role="alert">
-        <%= error %>
-      </div>
-    <% } %>
-    <% if(success && success.length > 0){ %>
-      <div class="alert alert-success" role="alert">
-        <%= success %>
-      </div>
-    <% } %>
-  </div>
+let newPaper = new Paper ({
+       title = req.body.title,
+       sectionA = xlsx.utils.sheet_to_json(xlsx.readFiler(req.body.sectionA).Sheets["Record1"]),
+       sectionB = xlsx.utils.sheet_to_json(xlsx.readFiler(eq.body.sectionB).Sheets["Record1"]),
+       sectionC = xlsx.utils.sheet_to_json(xlsx.readFiler(eq.body.sectionC).Sheets["Record1"])
+    }).save(function(err,doc){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log("successfully added the files");
+        }
+    });

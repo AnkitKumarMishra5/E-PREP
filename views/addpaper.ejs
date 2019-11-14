@@ -1,0 +1,40 @@
+<% include ./partials/header %>
+<div class="row">
+        <h1 style="text-align: center">Add a Question </h1>
+        <div class="rwd-form">
+          <form action="/addpaper" method="post">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input class="form-control" type="text" name="question" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="option1">Option A</label>
+                <input class="form-control" type="text" name="option1" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+              <label for="option2">Option B</label>
+              <input class="form-control" type="text" name="option2" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="option3">Option C</label>
+                <input class="form-control" type="text" name="option3" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="option4">Option D</label>
+                <input class="form-control" type="text" name="option4" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="ans">Correct Ans </label>
+                <input class="form-control" type="text" name="ans" autocomplete="off" required />
+            </div>
+            
+            <div class="form-group">
+              <button class="btn btn-md btn-primary btn-block">Submit For Approval</button>
+            </div>
+            <hr>
+            <a href="/home">Back</a>
+            <hr>
+          </form>
+        </div>
+      </div>
+<% include ./partials/footer %>

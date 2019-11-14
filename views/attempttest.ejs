@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+<div class="row">
+        <div class="col-md-3">
+                <!--create a card to display user details and timers-->
+        </div>
+        <div class="col-md-9">
+                <% papers.forEach(paper => {%>
+                <p><%= paper.question %></p>
+                <br><br>
+                <p><%= paper.option1 %></p>
+                <p><%= paper.option2 %></p>
+                <p><%= paper.option3 %></p>
+                <p><%= paper.option4 %></p>
+                <p><%= paper.ans %></p>
+                <em>Submitted By <b><%= paper.author.username %></b>,  <%= moment(paper.createdAt).fromNow() %></em>
+                 <% })%>
+        </div>
+</div>
+<% include ./partials/footer %>
