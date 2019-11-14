@@ -10,7 +10,7 @@ var   express        = require("express"),
       LocalStrategy  = require("passport-local"),
       methodOverride = require("method-override"),
       User           = require("./models/user"),
-      Paper          = require("./models/paper"),
+      testPaper      = require("./models/testpaper"),
       middleware     = require("./middleware"),
       xlsx           = require("xlsx"),
       fileupload     = require('express-fileupload');
@@ -68,6 +68,7 @@ app.get('/contact_us',(req,res)=> res.render('contact',{page:'contact'}));
 app.get('/about_us',(req,res)=> res.render('aboutus',{page:'about'}));
 app.get('/exams',(req,res)=> res.render('exams',{page:'test'}));
 app.get('/exams/testlist',(req,res)=>res.render('testlist'));
+app.get('/goodies',(req,res)=>res.render('goodies'));
 
 app.get('/addpaper', middleware.isLoggedIn, function(req, res) {
     res.render('addpaper',{page:'addpaper'});
@@ -79,13 +80,13 @@ app.post('/addpaper',function(req,res){
     var option2 = req.body.option2;
     var option3 = req.body.option3;
     var option4 = req.body.option4;
-    var ans =  req.body.ans;
+    var ans     = req.body.ans;
     var author = {
       id: req.user._id,
       username: req.user.username
     }
-    var newPaper = {question : question, option1 : option1, option2 :option2, option3: option3, option4 : option4, ans:ans};
-    Paper.create(newPaper, function(err,newlyCreated){
+    var newPaper = {question : question, option1 : option1, option2 : option2, option3: option3, option4 : option4, ans: ans,author:author};
+    testPaper.create(newPaper, function(err,newlyCreated){
         if(err){
             console.log(err);
         }else{
@@ -97,12 +98,7 @@ app.post('/addpaper',function(req,res){
     
 });
 app.get("/exams/testlist/attempttest",middleware.isLoggedIn, function(req, res){
-    //find the campground with provided ID
-        //console.log(foundCampground);
-        //console.log("and here goes the comments");
-        //console.log(comment);
-        //render show template with that campground
-    Paper.find({}, function(err, allPaper) {
+    testPaper.find({}, function(err, allPaper) {
         if (err) { console.log(err); }
         else {
             res.render("attempttest", { papers : allPaper});  

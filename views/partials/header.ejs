@@ -9,6 +9,7 @@
   
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
   <link rel="stylesheet" href="/styles/main.css">
+  
  
   <link 
   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
@@ -33,6 +34,7 @@
           <li class="<%= typeof page !== 'undefined' && page === 'addpaper' ? 'active' : '' %>"><a href="/addpaper">Add Paper</a></li>
           <li class="<%= typeof page !== 'undefined' && page === 'about' ? 'active' : '' %>"><a href="/about_us">About Us</a></li>
           <li class="<%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>"><a href="/contact_us">Contact Us</a></li>
+          <li class="<%= typeof page !== 'undefined' && page === 'goodies' ? 'active' : '' %>"><a href="/goodies">Goodies</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <% if (!currentUser) { %>

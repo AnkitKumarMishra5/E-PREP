@@ -310,3 +310,48 @@ h2{
 .pnt{
   color: white;
 }
+
+.question_tag{
+  color: white;
+  background: black;
+}
+.opt{
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.question-box
+{
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 30px;
+}
+
+.question
+{
+  margin:50px 20px;
+}
+
+.option
+{
+  padding: 10px;
+  margin:50px 80px;
+}
+
+.largerCheckbox { 
+  width: 20px;
+    height: 25px;
+    font-size: 2em;
+    display: inline;
+} 
+
+.logo
+{
+  font-size: 10px;
+}
+
+.pnt{
+  color: white;
+}
+

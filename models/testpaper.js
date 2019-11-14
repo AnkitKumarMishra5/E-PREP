@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 
-var paperSchema = new mongoose.Schema({
+var testPaperSchema = new mongoose.Schema({
    question: String,
    option1: String,
    option2: String,
@@ -19,4 +19,4 @@ var paperSchema = new mongoose.Schema({
    }
 });
 
-module.exports = mongoose.model("Paper", paperSchema);
+module.exports = mongoose.model("testPaper", testPaperSchema);

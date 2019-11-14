@@ -1,19 +1,63 @@
 <% include ./partials/header %>
 <div class="row">
+        <center><h3 class ="question_tag">JEE Mains Practice Paper 2013 Set-A</h3></center>
         <div class="col-md-3">
+               <br><br><br>
                 <!--create a card to display user details and timers-->
+                <div class="card">
+                        <div class="bg-danger"><center><span id="timeleft" ></span></center></div><br>
+
+                        <center><p> Hello <a href="#"><%= currentUser.username %></a> , your test has been started</p></center>
+                        <center><p>Result will be mailed to the below mail <a href="#"><%=currentUser.email %></a></p></center>
+                </div>
+                
         </div>
         <div class="col-md-9">
                 <% papers.forEach(paper => {%>
-                <p><%= paper.question %></p>
-                <br><br>
-                <p><%= paper.option1 %></p>
-                <p><%= paper.option2 %></p>
-                <p><%= paper.option3 %></p>
-                <p><%= paper.option4 %></p>
-                <p><%= paper.ans %></p>
-                <em>Submitted By <b><%= paper.author.username %></b>,  <%= moment(paper.createdAt).fromNow() %></em>
-                 <% })%>
+                <div class="card">
+                <div class="row question">
+                        <p style="font-size: 2em; padding-top: 17px;"><%= paper.question %></p><hr>
+                </div>
+                <div class="row option">
+                        <div class="row opt"><input type="radio"  class="largerCheckbox" name="q1" value="1"><span >   <%= paper.option1 %></span></div>
+                        <div class="row opt"><input type="radio" class="largerCheckbox" name="q1" value="2"><span>  <%= paper.option2 %></span></div>
+                        <div class="row opt"><input type="radio" class="largerCheckbox" name="q1" value="3"><span>  <%= paper.option3 %></span></div>
+                        <div class="row opt"><input type="radio" class="largerCheckbox" name="q1" value="4"><span>  <%= paper.option4 %></span></div>
+                </div>
+                <button onclick="myfunction()" style="margin-bottom: 30px; margin-left: 20px;">Click for Answers</button>
+                <div style="display: none; margin-left: 30px;" id="myDIV">
+                      <em>Correct answer is </em><b><%= paper.ans %></b>
+                </div>
+                      <div class="pull-right"><em>Submitted By <a href="/users/<%= paper.author.id %>"><%= paper.author.username %></a>,  <%= moment(paper.createdAt).fromNow() %></em></div>
+                 <br></div><% })%>
+                
         </div>
 </div>
+<script>
+        function checkanswer(){
+                console.log("kishan kunal");
+        }
+</script>
+<script>
+        function myfunction() {
+            var x = document.getElementById("myDIV");
+            x.style.display = "block";
+}
+</script>
+<script >
+        var countDownDate = new Date();
+countDownDate.setHours(countDownDate.getHours() + 2);
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("timeleft").innerHTML =hours + ":" + minutes + ":" + seconds;
+    if (distance < 0) {
+        clearInterval(x);
+    }
+}, 1000);
+
+</script>
 <% include ./partials/footer %>
